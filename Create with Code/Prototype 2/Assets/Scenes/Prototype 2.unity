@@ -574,8 +574,8 @@ MonoBehaviour:
   - {fileID: 8977534720195667452, guid: 780848ad2cfd2f74da5b943fe436778f, type: 3}
   - {fileID: 3879764918459847759, guid: 5d7bb368be09c97428dd7edbf2ec8da3, type: 3}
   spawnKey: 115
-  spawnRangeX: 15
-  spawnPosZ: 20
+  spawnOrthogonalRange: 7
+  spawnDistanceFromCenter: 20
 --- !u!4 &886478747
 Transform:
   m_ObjectHideFlags: 0
