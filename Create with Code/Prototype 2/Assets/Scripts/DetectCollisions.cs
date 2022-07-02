@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DetectCollisions : MonoBehaviour
 {
+    public string playerGameObjectName;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,9 +18,18 @@ public class DetectCollisions : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider collidingThing)
     {
         Destroy(gameObject);
-        Destroy(other.gameObject);
+        if (collidingThing.gameObject.name == playerGameObjectName) {
+            PlayerController playerController;
+            playerController = collidingThing.gameObject.GetComponent<PlayerController>();
+            playerController.lives--;            
+            if (playerController.lives <= 0) {
+                Debug.LogWarning("Game Over: Crushed by the stampede");
+            }
+        } else {
+            Destroy(collidingThing.gameObject);
+        }        
     }
 }

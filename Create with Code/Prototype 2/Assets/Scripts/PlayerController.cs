@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
-{    
+{
+    public int lives = 3;
     public float speed = 10.0f;
     public float xRange = 20.0f;
     public float zRange = 20.0f;

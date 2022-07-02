@@ -6,6 +6,7 @@ public class DestroyOutOfBounds : MonoBehaviour
 {
     private float topBound = 30;
     private float lowerBound = -12;
+    private float xBoundRange = 50;
 
     // Start is called before the first frame update
     void Start()
@@ -22,8 +23,16 @@ public class DestroyOutOfBounds : MonoBehaviour
         }
         else if (transform.position.z < lowerBound)
         {
-            Debug.LogWarning("Game Over");
+            Debug.LogWarning("Game Over: A beast escaped");
             Destroy(gameObject);
-        }        
+        }
+        else if (transform.position.x > xBoundRange)
+        {
+            Destroy(gameObject);
+        }
+        else if (transform.position.x < -xBoundRange)
+        {
+            Destroy(gameObject);
+        }
     }
 }
