@@ -6,14 +6,19 @@ public class PlayerController : MonoBehaviour
 {
     public float maxSpeed = 10f;
     public GameObject leftWall;
-    public GameObject rightWall;
-
+    public GameObject rightWall;   
     public float minDistanceFromWall;
+
+    private Animator playerAnim;
+    private Rigidbody playerRb;
+    private bool headingRight;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerAnim = GetComponent<Animator>();
+        playerRb = GetComponent<Rigidbody>();
+        headingRight = true;
     }
 
     // Update is called once per frame
@@ -39,5 +44,27 @@ public class PlayerController : MonoBehaviour
             }
         }
         transform.Translate(Vector3.right * horizontalInput * maxSpeed * Time.deltaTime, Space.World);
+
+        if (headingRight == true && horizontalInput < 0)
+        {
+            headingRight = false;
+            transform.rotation = Quaternion.LookRotation(Vector3.left, Vector3.up);
+        }
+        else if (headingRight == false && horizontalInput > 0)
+        {
+            headingRight = true;
+            transform.rotation = Quaternion.LookRotation(Vector3.right, Vector3.up);
+        }
+
+        float animationSpeed;
+        if (horizontalInput > 0)
+        {
+            animationSpeed = horizontalInput;
+        }
+        else
+        {
+            animationSpeed = -horizontalInput;
+        }
+        playerAnim.SetFloat("Speed_f", animationSpeed);
     }
 }
