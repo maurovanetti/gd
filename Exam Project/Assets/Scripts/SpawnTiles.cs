@@ -13,7 +13,7 @@ public class SpawnTiles : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Spawn(Vector3.zero);
+        Spawn(transform.position);
     }
 
     // Update is called once per frame
@@ -30,8 +30,8 @@ public class SpawnTiles : MonoBehaviour
             {
                 Vector3 position = new Vector3(
                     origin.x + (column * tileSideLength),
-                    origin.y,
-                    origin.z + (row * tileSideLength));
+                    origin.y + (row * tileSideLength),
+                    origin.z + Random.Range(-1f, 1f));
                 GameObject prefab = tilePrefabs[Random.Range(0, tilePrefabs.Length)];
                 GameObject tile = Instantiate(prefab, position, prefab.transform.rotation, 
                     transform); // Sets the spawner as the parent of the newly instantiated tile
