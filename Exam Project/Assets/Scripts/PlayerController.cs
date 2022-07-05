@@ -92,17 +92,23 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        // The collision with the ball is handled by the physics system but if
+        // the power shot was prepared, the ball receives an extra push
         if (powerShotReady)
         {
             if (collision.collider.CompareTag("Ball"))
             {
+                // Get the ball's Rigidbody to apply physical effects on it
                 GameObject ball = collision.gameObject;
                 Rigidbody ballRb = ball.GetComponent<Rigidbody>();
 
                 // Adds force to the ball to make it bounce back
                 Vector3 playerToBall = ball.transform.position - transform.position;                
-                ballRb.AddForce(playerToBall.normalized * powerShotForce, ForceMode.Impulse);
+                ballRb.AddForce(
+                    playerToBall.normalized * powerShotForce, // Versor * magnitude
+                    ForceMode.Impulse);
 
+                // The ball gets a particles trail, too
                 ball.GetComponent<Ball>().AttachTrail();
             }
         }
