@@ -522,6 +522,8 @@ GameObject:
   - component: {fileID: 6342355828767847546}
   - component: {fileID: -1942100507122588799}
   - component: {fileID: 5490070599049040981}
+  - component: {fileID: 6490638546333521051}
+  - component: {fileID: -3026066110740204591}
   m_Layer: 0
   m_Name: Moose
   m_TagString: Untagged
@@ -597,6 +599,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13a41d89bf6375640a103f3454c27a60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &6490638546333521051
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6342355828758429540}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.17218547, y: 0.465031, z: 0.4264402}
+  m_Center: {x: -0.002273126, y: 0.22628596, z: 0.063339345}
+--- !u!114 &-3026066110740204591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6342355828758429540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa83fc67264a1f04da34f001cd371d2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6342355828758433688

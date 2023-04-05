@@ -22,7 +22,14 @@ public class DestroyOutOfBounds : MonoBehaviour
         }        
         else if (transform.position.z < lowerBound)
         {
+            GameOver();
             Destroy(gameObject);
         }
+    }
+
+    private void GameOver()
+    {
+        Debug.Log("Game Over");
+        GameObject.Find("Game Over Label").GetComponent<TMPro.TextMeshProUGUI>().text = "GAME OVER";
     }
 }
