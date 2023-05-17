@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {       
-        if (other.CompareTag("Powerup"))
+        if (!hasPowerup && other.CompareTag("Powerup"))
         {
             hasPowerup = true;
             powerupIndicator.SetActive(true);
