@@ -13,9 +13,10 @@ public class PlayerControllerX : MonoBehaviour
     public bool hasPowerup;
     public GameObject powerupIndicator;
     public int powerUpDuration = 5;
+    public ParticleSystem boostParticles;
 
-    private float normalStrength = 10; // how hard to hit enemy without powerup
-    private float powerupStrength = 25; // how hard to hit enemy with powerup
+    private const float normalStrength = 10; // how hard to hit enemy without powerup
+    private const float powerupStrength = 25; // how hard to hit enemy with powerup
     
     void Start()
     {
@@ -25,6 +26,7 @@ public class PlayerControllerX : MonoBehaviour
 
     void Update()
     {
+        boostParticles.transform.position = transform.position + Vector3.down * 0.5f;
         if (Input.GetKey(KeyCode.Space))
         {
             Boost();
@@ -44,6 +46,7 @@ public class PlayerControllerX : MonoBehaviour
 
     void Boost()
     {
+        boostParticles.Play();
         speed = moreSpeed;
     }
 
