@@ -21,7 +21,6 @@ public class SpawnManagerX : MonoBehaviour
     void Update()
     {
         enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
-
         if (enemyCount == 0)
         {
             SpawnEnemyWave(waveCount);
