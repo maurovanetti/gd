@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public bool isGameOver = false;
     private float spawnRate = 1.0f;
     private int score = 0;
-    private bool isGameOver = false;
+
     public List<GameObject> targets;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI gameOverText;
@@ -25,6 +27,11 @@ public class GameManager : MonoBehaviour
         isGameOver = true;
     }
 
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     public void UpdateScore(int scoreToAdd)
     {
         score += scoreToAdd;
@@ -33,16 +40,13 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator SpawnTarget()
     {
-        while (true)
+        while (!isGameOver)
         {
-            if (!isGameOver)
-            {
-                yield return new WaitForSeconds(spawnRate);
-                int targetIndex = Random.Range(0, targets.Count);
-                GameObject randomPrefab = targets[targetIndex];
-                Instantiate(randomPrefab);
-                UpdateScore(5);
-            }
+            yield return new WaitForSeconds(spawnRate);
+            int targetIndex = Random.Range(0, targets.Count);
+            GameObject randomPrefab = targets[targetIndex];
+            Instantiate(randomPrefab);
+            UpdateScore(5);
         }
     }
 
