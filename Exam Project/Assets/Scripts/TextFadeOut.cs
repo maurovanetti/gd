@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class TextFadeOut : MonoBehaviour
 {
+    private float fadeDuration = 0.5f;
+    private float verticalSpeed = 5f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,15 +19,15 @@ public class TextFadeOut : MonoBehaviour
     void Update()
     {
         // Vertically raises the label a tiny bit at each frame
-        transform.position += Vector3.up * 0.01f;
+        transform.position += Vector3.up * verticalSpeed * Time.deltaTime;
 
         // Fades out the label
         TextMesh textMesh = GetComponent<TextMesh>();
         textMesh.color = new Color(
             textMesh.color.r, // Same red
             textMesh.color.g, // Same green
-            textMesh.color.b, // Same blue
-            textMesh.color.a - 0.03f // Lower alpha (more and more transparent)
+            textMesh.color.b, // Same blue            
+            textMesh.color.a - (Time.deltaTime / fadeDuration) // Lower alpha (more and more transparent)
             );
 
         // When the label is completely transparent, removes it
