@@ -7,23 +7,32 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public bool isGameOver = false;
-    private float spawnRate = 1.0f;
+    private float spawnRate = 2.0f; // corresponds to Easy
     private int score = 0;
 
     public List<GameObject> targets;
     public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI gameOverText;
+    public GameObject titleScreenStuff;
+    public GameObject gameOverStuff;
 
     // Start is called before the first frame update
     void Start()
     {
+        
+    }
+
+    public void StartGame(int difficulty)
+    {
+        spawnRate /= difficulty;
+        titleScreenStuff.SetActive(false);
+        scoreText.gameObject.SetActive(true);
         StartCoroutine(SpawnTarget());
-        UpdateScore(0);        
+        UpdateScore(0);
     }
 
     public void GameOver()
     {
-        gameOverText.gameObject.SetActive(true);
+        gameOverStuff.SetActive(true);
         isGameOver = true;
     }
 
