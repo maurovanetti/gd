@@ -21,6 +21,15 @@ public class PongPaddle : MonoBehaviour
         transform.Translate(Vector3.up * verticalInput * Time.deltaTime * maxSpeed, relativeTo);
 
         float horizontalInput = Input.GetAxis("Horizontal");
+        float zRotation = transform.rotation.eulerAngles.z;
+        if (zRotation > 70 && zRotation <= 180 && horizontalInput < 0)
+        {
+            horizontalInput = 0;
+        } 
+        else if (zRotation > 180 && zRotation < 290 && horizontalInput > 0)
+        {
+            horizontalInput = 0;
+        }
         transform.Rotate(Vector3.back, horizontalInput * Time.deltaTime * maxRotationSpeed);
     }
 }
